@@ -9,8 +9,9 @@ class Auto:
         self.passengers = []
 
 #додаємо метод додавання пасажирів
-    def add_passengers(self, human):
-        self.passengers.append(human)
+    def add_passengers(self, *args):
+        for passenger in args:
+            self.passengers.append(passenger)
 
 #Додаємо метод, що виводить список пасажирів
 
@@ -26,8 +27,8 @@ class Auto:
 # реєстрації пасажирів та виведення їхніх імен
 nick = Human("Nick")
 kate = Human("Kate")
+roma = Human("Roman")
 car = Auto("Mercedes")
 
-car.add_passengers(nick)
-car.add_passengers(kate)
+car.add_passengers(nick, kate, roma)
 car.print_passengers_names()
