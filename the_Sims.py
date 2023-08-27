@@ -9,8 +9,12 @@ class Human:
         self.job=job
         self.car=car
         self.home=home
+        self.pet =Pet
 
 # Огошуємо методи отримання дому, авто та роботи
+    def get_pet(self):
+        self.pet=Pet()
+
     def get_home(self):
         self.home=House()
 
@@ -113,6 +117,10 @@ class Human:
         print(f"{car_indexes:^50}","\n")
         print(f"Fuel - {self.car.fuel}")
         print(f"Strength - {self.car.strength}")
+        pet_indexes = "Pet indexes"
+        print(f"{pet_indexes:^50}","\n")
+        print(f"Happiness - {self.pet.happiness}")
+        print(f"Hunger - {self.pet.hunger}")
 
 # Запишемо код методу перевірки життєздатності персонажа:
     def is_alive(self):
@@ -168,7 +176,7 @@ class Human:
 # Тепер залишилося додати дії, що виконуватимуться
 # згідно зі значенням змінної dice:
         elif dice ==1:
-            print("Let's chsll!")
+            print("Let's chill!")
             self.chill()
         elif dice ==2:
             print("Start working")
@@ -205,10 +213,43 @@ class Auto:
             return False
 
 # Тепер попрацюємо над класом будинку, який матиме лише два атрибути – безлад та кількість їжі:
+class Pet:
+    def __init__(self, name="Pet", happiness=50, hunger=50, playfulness=50):
+        self.name = name
+        self.happiness = happiness
+        self.hunger = hunger
+        self.playfulness = playfulness
+
+    def feed(self):
+        if self.hunger < 90:
+            self.hunger += 10
+            print(f"{self.name} is happily eating.")
+        else:
+            print(f"{self.name} is too full to eat.")
+
+    def play(self):
+        if self.playfulness < 90:
+            self.playfulness += 10
+            self.happiness += 5
+            print(f"{self.name} is having fun playing.")
+        else:
+            print(f"{self.name} is too tired to play.")
+
+# Добавляем создание экземпляра питомца и взаимодействие с ним
+my_pet = Pet(name="Buddy")
+
+print(f"My pet's name is {my_pet.name}.")
+my_pet.feed()
+my_pet.play()
+
+
+
 class House:
     def __init__(self):
         self.mess = 0
         self.food = 0
+
+
 
 job_list = {
     "Java developer": {"salary": 50, "gladness_less": 10},
